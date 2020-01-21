@@ -1,18 +1,18 @@
 {
-  "name": "jmessage-react-plugin-fix",
-  "version": "0.0.1",
-  "description": "a jmessage plugin for react native application(fix bugs by Macrow)",
+  "name": "jmessage-react-plugin",
+  "version": "3.1.7",
+  "description": "a jmessage plugin for react native application",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:Macrow_wh/jmessage-react-plugin.git"
+    "url": "git@github.com:jpush/jmessage-react-plugin.git"
   },
   "keywords": [
     "react",
     "native",
     "jmessage"
   ],
-  "author": "KenChoi, huminiOS, Macrow",
+  "author": "KenChoi, huminiOS",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/jpush/jmessage-react-plugin/issues"
