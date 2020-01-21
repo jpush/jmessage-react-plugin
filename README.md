@@ -84,6 +84,30 @@ protected List<ReactPackage> getPackages() {
   -framework "JMessage"
   ```
 
+#### 使用Autolink
+
+```
+yarn add jmessage-react-plugin
+touch react-native.config.js
+cd ios
+pod install
+```
+在刚刚创建的react-native.config.js文件（位于项目根目录）中，粘贴下面的内容
+```
+module.exports = {
+  dependencies: {
+    'jmessage-react-plugin': {
+      platforms: {
+        android: {
+          packageInstance: 'new JMessageReactPackage(false)'
+        }
+      }
+    },
+  }
+};
+```
+注意：上面的初始化参数，是true还是false，根据你自己的需要填入即可
+然后按照上面的配置说明进行配置即可使用
 
 ## API
 
