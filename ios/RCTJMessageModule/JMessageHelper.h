@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <JMessage/JMessage.h>
+#import "RCTJMessageEventQueue.h"
 
 #define kJJMessageReceiveMessage     @"kJJMessageReceiveMessage"
 #define kJJMessageReceiptMessage     @"kJJMessageReceiptMessage"

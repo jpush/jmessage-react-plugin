@@ -18,13 +18,12 @@ const {
         super(props);
     }
 
-    componentWillMount() {
+    componentDidMount() {
         const { navigate } = this.props.navigation;
         var params = {
-              'appkey':"58067d5678c387f20831a956",
+              'appkey':"e58a32cb3e4469ebf31867e5",
               'isOpenMessageRoaming': true,
-              'isProduction': false,
-              'channel': ""
+              'isProduction': false
              }
         JMessage.init(params)
         JMessage.getMyInfo((myInfo) => {
@@ -37,6 +36,9 @@ const {
 
                 // navigate('Chat')
             }
+        })
+        JMessage.addSyncOfflineMessageListener((message) => {
+            console.log("JS onSyncOffline:"+JSON.stringify(message));
         })
 
       }

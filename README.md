@@ -2,6 +2,53 @@
 
 极光官方开发的[极光 IM](https://docs.jiguang.cn/jmessage/guideline/jmessage_guide/) react-native 插件，同时支持 文字、图片、语言、文件和自定义消息。同时支持 iOS 和 Android 平台。
 
+### ChangeLog
+
+3.1.8
+
+1.需要在[AppDelegate.m](https://github.com/jpush/jmessage-react-plugin/blob/master/example/ios/JMessageDemo/AppDelegate.m) 中手动添加初始化方法，示例如下
+
+```
+#import <RCTJMessageModule.h>
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{   
+   [JMessage setupJMessage:launchOptions
+                    appKey:appKey
+                   channel:@""
+          apsForProduction:isProduction
+                  category:nil
+            messageRoaming:true];
+   
+   [JMessage addDelegate:self withConversation:nil];
+}
+
+//JMessage 离线消息监听
+- (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
+                         offlineMessages:(NSArray JMSG_GENERIC ( __kindof JMSGMessage *) *)offlineMessages {
+  [RCTJMessageEventQueue sharedInstance].offlineConversation = conversation;
+  [RCTJMessageEventQueue sharedInstance].offlineMsgArray = offlineMessages;
+}
+```
+
+2.js中初始化和监听需要在[componentDidMount()](https://github.com/jpush/jmessage-react-plugin/blob/master/example/app/routes/Launch/index.js)componentDidMount()方法内，示例如下
+
+```
+componentDidMount() {
+        JMessage.init({
+            appkey: appkey,
+            channel:channel
+            isOpenMessageRoaming: true,
+            isProduction: true,
+        });
+        JMessage.setDebugMode({enable: true});
+        //离线消息监听
+        JMessage.addSyncOfflineMessageListener((message) => {
+            console.log("| JIGUANG |===addSyncOfflineMessageListener====" + JSON.stringify(message))
+        });
+}        
+```
+
 ## 安装
 
 ```

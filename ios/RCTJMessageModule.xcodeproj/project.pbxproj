@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C4EF2F722FC22F8000A182E /* JMessage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 629543EF21E86C10000314E4 /* JMessage.framework */; };
+		5C98693A24668C0B008AE942 /* RCTJMessageEventQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C98693824668C0B008AE942 /* RCTJMessageEventQueue.m */; };
 		6212EB1A1F3C34BB00BDF51A /* RCTJMessageModule.m in Sources */ = {isa = PBXBuildFile; fileRef = 6212EB191F3C34BB00BDF51A /* RCTJMessageModule.m */; };
 		6212EB1B1F3C34BB00BDF51A /* RCTJMessageModule.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6212EB181F3C34BB00BDF51A /* RCTJMessageModule.h */; };
 		62D683E21F4469820083CDF6 /* JMessageHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 62D683E11F4469820083CDF6 /* JMessageHelper.m */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C98693824668C0B008AE942 /* RCTJMessageEventQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTJMessageEventQueue.m; sourceTree = "<group>"; };
+		5C98693924668C0B008AE942 /* RCTJMessageEventQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTJMessageEventQueue.h; sourceTree = "<group>"; };
 		6212EB151F3C34BB00BDF51A /* libRCTJMessageModule.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTJMessageModule.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6212EB181F3C34BB00BDF51A /* RCTJMessageModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTJMessageModule.h; sourceTree = "<group>"; };
 		6212EB191F3C34BB00BDF51A /* RCTJMessageModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTJMessageModule.m; sourceTree = "<group>"; };
@@ -74,6 +77,8 @@
 		6212EB171F3C34BB00BDF51A /* RCTJMessageModule */ = {
 			isa = PBXGroup;
 			children = (
+				5C98693924668C0B008AE942 /* RCTJMessageEventQueue.h */,
+				5C98693824668C0B008AE942 /* RCTJMessageEventQueue.m */,
 				629543EF21E86C10000314E4 /* JMessage.framework */,
 				62D683E01F4469820083CDF6 /* JMessageHelper.h */,
 				62D683E11F4469820083CDF6 /* JMessageHelper.m */,
@@ -143,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				62D683E21F4469820083CDF6 /* JMessageHelper.m in Sources */,
+				5C98693A24668C0B008AE942 /* RCTJMessageEventQueue.m in Sources */,
 				6212EB1A1F3C34BB00BDF51A /* RCTJMessageModule.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

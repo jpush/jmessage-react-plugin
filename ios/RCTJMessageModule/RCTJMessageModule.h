@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#import "JMessageHelper.h"
+
 #if __has_include(<React/RCTBridgeModule.h>)
 #import <React/RCTBridgeModule.h>
 #elif __has_include("RCTBridgeModule.h")

@@ -76,7 +76,7 @@ export default class Chat extends Component {
       if (jmessage.extras.fileType === 'video') {
         auroraMsg.mediaPath = jmessage.path
         auroraMsg.duration = jmessage.duration
-        auroraMsg.msgType = "video"  
+        auroraMsg.msgType = "video"
       } else {
         console.log("cann't parse this file type ignore")
         return {}
@@ -184,7 +184,6 @@ export default class Chat extends Component {
       roomId: this.conversation.roomId
     }
     this.messageListDidLoadCallback = () => {
-
       JMessage.getHistoryMessages(parames, (messages) => {
         // Alert.alert('messages',JSON.stringify(messages))
         console.log("JS getHistoryMessage:"+JSON.stringify(messages));
@@ -212,9 +211,9 @@ export default class Chat extends Component {
           appKey: message.from.appKey,
           id: message.id,
         }
-        
-        JMessage.setMsgHaveRead(readParams,(result) => {},(error) => {})
-        
+
+        //JMessage.setMsgHaveRead(readParams,(result) => {},(error) => {})
+
         if (this.conversation.type === 'single') {
           if (message.target.type === 'user') {
             if (message.from.username === this.conversation.username) {
@@ -240,7 +239,8 @@ export default class Chat extends Component {
         }
       }
       JMessage.addReceiveMessageListener(this.receiveMessageCallBack)
-      JMessage.addReceiptMessageListener((result)=>{})
+      //JMessage.addReceiptMessageListener((result)=>{})
+
     }
     AuroraIController.addMessageListDidLoadListener(this.messageListDidLoadCallback)
     // this.timer = setTimeout(() => {
@@ -273,7 +273,7 @@ export default class Chat extends Component {
     } else {
       JMessage.exitConversation()
     }
-    
+
   }
 
   resetMenu() {
@@ -345,7 +345,7 @@ export default class Chat extends Component {
     }, (error) => {
 
     })
-    
+
   }
 
   onStatusViewClick = (message) => {
@@ -446,7 +446,7 @@ export default class Chat extends Component {
     //     'messageType' : message.type,
     //     'text' : message.text,
     //   }
-      
+
     //   JMessage.sendMessage(groupAtMessage, success => {
     //     console.log('JS sendMessage success groupAt:'+JSON.stringify(success))
     //   }, error => {
@@ -466,7 +466,7 @@ export default class Chat extends Component {
       if (auroraMsg.msgType === undefined) {
         return
       }
-      
+
       auroraMsg.status = 'send_going'
       AuroraIController.appendMessages([auroraMsg])
       AuroraIController.scrollToBottom(true)
@@ -481,7 +481,7 @@ export default class Chat extends Component {
         notificationTitle: "Title Test",
         notificationText: "context"
       };
-      
+
       JMessage.sendMessage(msg, (jmessage) => {
         var auroraMsg = this.convertJMessageToAuroraMsg(jmessage)
         AuroraIController.updateMessage(auroraMsg)
@@ -489,15 +489,15 @@ export default class Chat extends Component {
       }, (error) => {
         console.log('JS sendMessage error:'+JSON.stringify(error))
       })
-      
+
       // 这里的路径以android为例
-      // var userName = "";
-      // var appKey = "";
-      // var videoFilePath = "sdcard/DCIM/1.mp4";
-      // var videoFileName = "xxxxxx";
-      // var videoImagePath = "sdcard/DCIM/1.png";
-      // var videoImageFormat = "png";
-      // var videoDuration = 10; 
+      var userName = "";
+      var appKey = "";
+      var videoFilePath = "sdcard/DCIM/1.mp4";
+      var videoFileName = "xxxxxx";
+      var videoImagePath = "sdcard/DCIM/1.png";
+      var videoImageFormat = "png";
+      var videoDuration = 10;
       // JMessage.sendVideoMessage({'type': 'single','username': userName,'appKey': appKey,
       //       "path":videoFilePath,"name":videoFileName,"thumbPath":videoImagePath,"thumbFormat":videoImageFormat,"duration":videoDuration},
       //       (msg) => {
@@ -506,7 +506,7 @@ export default class Chat extends Component {
       //           console.log("sendVideo error:"+error.description);
       //       });
 
-    // })
+    })
   }
 
   onTakePicture = (media) => {
