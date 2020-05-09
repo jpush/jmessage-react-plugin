@@ -25,11 +25,9 @@
     return instance;
 }
 
-
 -(void)initJMessage:(NSDictionary*)options{
-    //TODO: add init jmessage
-    // init third-party SDK
-    
+    NSLog(@"| JIGUANG | JS init");
+
     NSString *appkey = @"";
     NSString *channel = @"";
     BOOL isProduction = true;
@@ -53,15 +51,27 @@
         NSNumber *isProductionNum = options[@"isProduction"];
         isProduction = [isProductionNum boolValue];
     }
-    
-    [JMessage addDelegate:self withConversation:nil];
-    
+        
     [JMessage setupJMessage:_launchOptions
                      appKey:appkey
                     channel:@""
            apsForProduction:isProduction
                    category:nil
-             messageRoaming:isOpenMessageRoaming];
+                 messageRoaming:isOpenMessageRoaming];
+    
+    [JMessage addDelegate:self withConversation:nil];
+    
+    RCTJMessageEventQueue *instance = [RCTJMessageEventQueue sharedInstance];
+    if(instance.offlineConversation && instance.offlineMsgArray && instance.offlineMsgArray.count){
+        NSMutableDictionary *callBackDic = @{}.mutableCopy;
+        callBackDic[@"conversation"] = [instance.offlineConversation conversationToDictionary];
+        NSMutableArray *messageArr = @[].mutableCopy;
+        for (JMSGMessage *message in instance.offlineMsgArray) {
+            [messageArr addObject: [message messageToDictionary]];
+        }
+        callBackDic[@"messageArray"] = messageArr;
+        [[NSNotificationCenter defaultCenter] postNotificationName:kJJMessageSyncOfflineMessage object:callBackDic];
+    }
 }
 
 - (void)onReceiveMessageRetractEvent:(JMSGMessageRetractEvent *)retractEvent {
@@ -378,17 +388,17 @@
                                                         object: [conversation conversationToDictionary]];
 }
 
-- (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
-                         offlineMessages:(NSArray JMSG_GENERIC ( __kindof JMSGMessage *) *)offlineMessages {
-    NSMutableDictionary *callBackDic = @{}.mutableCopy;
-    callBackDic[@"conversation"] = [conversation conversationToDictionary];
-    NSMutableArray *messageArr = @[].mutableCopy;
-    for (JMSGMessage *message in offlineMessages) {
-        [messageArr addObject: [message messageToDictionary]];
-    }
-    callBackDic[@"messageArray"] = messageArr;
-    [[NSNotificationCenter defaultCenter] postNotificationName:kJJMessageSyncOfflineMessage object:callBackDic];
-}
+//- (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
+//                         offlineMessages:(NSArray JMSG_GENERIC ( __kindof JMSGMessage *) *)offlineMessages {
+//    NSMutableDictionary *callBackDic = @{}.mutableCopy;
+//    callBackDic[@"conversation"] = [conversation conversationToDictionary];
+//    NSMutableArray *messageArr = @[].mutableCopy;
+//    for (JMSGMessage *message in offlineMessages) {
+//        [messageArr addObject: [message messageToDictionary]];
+//    }
+//    callBackDic[@"messageArray"] = messageArr;
+//    [[NSNotificationCenter defaultCenter] postNotificationName:kJJMessageSyncOfflineMessage object:callBackDic];
+//}
 
 @end
 

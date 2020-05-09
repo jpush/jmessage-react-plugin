@@ -8,6 +8,7 @@
  */
 
 #import "AppDelegate.h"
+#import "RCTJMessageModule.h"
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -16,6 +17,31 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  
+  [JMessage setupJMessage:launchOptions
+                   appKey:@"e58a32cb3e4469ebf31867e5"
+                  channel:@""
+         apsForProduction:false
+                 category:nil
+           messageRoaming:true];
+  
+  [JMessage addDelegate:self withConversation:nil];
+  
+  // Required - 注册 APNs 通知
+  if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+      //可以添加自定义categories
+      [JMessage registerForRemoteNotificationTypes:(UIUserNotificationTypeBadge |
+                                                        UIUserNotificationTypeSound |
+                                                        UIUserNotificationTypeAlert)
+                                            categories:nil];
+  } else {
+      //categories 必须为nil
+      [JMessage registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge |
+                                                        UIRemoteNotificationTypeSound |
+                                                        UIRemoteNotificationTypeAlert)
+                                            categories:nil];
+  }
+  
   NSURL *jsCodeLocation;
 
   NSString *mainBundlePath = [[NSBundle mainBundle] bundlePath];
@@ -42,6 +68,19 @@
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Required - 注册token
+    NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken: %@",deviceToken);
+    [JMessage registerDeviceToken:deviceToken];
+}
+
+//JMessage 离线消息
+- (void)onSyncOfflineMessageConversation:(JMSGConversation *)conversation
+                         offlineMessages:(NSArray JMSG_GENERIC ( __kindof JMSGMessage *) *)offlineMessages {
+  [RCTJMessageEventQueue sharedInstance].offlineConversation = conversation;
+  [RCTJMessageEventQueue sharedInstance].offlineMsgArray = offlineMessages;
 }
 
 @end

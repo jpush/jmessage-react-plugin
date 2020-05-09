@@ -395,6 +395,7 @@
 		2D02E47B1E0B4A5D006451C7 /* JMessageDemo-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "JMessageDemo-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C54343FC0D74C6180E8B4CC /* RCTJCoreModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJCoreModule.xcodeproj; path = "../node_modules/jcore-react-native/ios/RCTJCoreModule.xcodeproj"; sourceTree = "<group>"; };
 		53E405AEFA73434487A5D4CD /* RCTJMessageModule.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTJMessageModule.xcodeproj; path = "../node_modules/jmessage-react-plugin/ios/RCTJMessageModule.xcodeproj"; sourceTree = "<group>"; };
+		5C2F66EB24640DCB000D9A14 /* JMessageDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = JMessageDemo.entitlements; path = JMessageDemo/JMessageDemo.entitlements; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		621730121F4DAA24001ADED4 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		621730141F4DAA2A001ADED4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -557,6 +558,7 @@
 		13B07FAE1A68108700A75B9A /* JMessageDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5C2F66EB24640DCB000D9A14 /* JMessageDemo.entitlements */,
 				6258B07C1F4E763A00990134 /* defoult_header.png */,
 				6258B07D1F4E763A00990134 /* defoult_header@2x.png */,
 				6258B07E1F4E763A00990134 /* defoult_header@3x.png */,
@@ -783,7 +785,8 @@
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = RL64Y54S9V;
+						DevelopmentTeam = 8X2A38Q9VD;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -796,6 +799,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1261,9 +1265,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JMessageDemo/JMessageDemo.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = RL64Y54S9V;
+				DEVELOPMENT_TEAM = 8X2A38Q9VD;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/jmessage-react-plugin/ios/RCTJMessageModule";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1285,8 +1291,9 @@
 					"-framework",
 					"\"JMessage\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.huminios.jpushTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmessage.sdk;
 				PRODUCT_NAME = JMessageDemo;
+				PROVISIONING_PROFILE_SPECIFIER = "com.jmessage.sdk-dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1296,8 +1303,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = JMessageDemo/JMessageDemo.entitlements;
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RL64Y54S9V;
+				DEVELOPMENT_TEAM = 8X2A38Q9VD;
 				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../node_modules/jmessage-react-plugin/ios/RCTJMessageModule";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1319,8 +1328,9 @@
 					"-framework",
 					"\"JMessage\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.huminios.jpushTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jmessage.sdk;
 				PRODUCT_NAME = JMessageDemo;
+				PROVISIONING_PROFILE_SPECIFIER = "com.jmessage.sdk-dev";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

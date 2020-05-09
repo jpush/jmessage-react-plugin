@@ -22,8 +22,6 @@
 #import "React/RCTBridge.h"
 #endif
 
-#import "JMessageHelper.h"
-#import <JMessage/JMessage.h>
 #import <AVFoundation/AVFoundation.h>
 
 typedef void (^JMSGConversationCallback)(JMSGConversation *conversation,NSError *error);
@@ -424,6 +422,12 @@ RCT_EXPORT_METHOD(setDebugMode:(NSDictionary *)param) {
 #pragma mark IM - Notifications - begin
 - (void)onSyncOfflineMessage: (NSNotification *) notification {
     [self.bridge.eventDispatcher sendAppEventWithName:syncOfflineMessageEvent body:notification.object];
+    if([RCTJMessageEventQueue sharedInstance].offlineConversation){
+        [RCTJMessageEventQueue sharedInstance].offlineConversation = nil;
+    }
+    if([RCTJMessageEventQueue sharedInstance].offlineMsgArray.count){
+        [RCTJMessageEventQueue sharedInstance].offlineMsgArray = nil;
+    }
 }
 
 - (void)onSyncRoamingMessage: (NSNotification *) notification {
