@@ -634,7 +634,7 @@ JMessage.getBlockedGroupList((groupArr) => {
 
 #### 示例
 ```js
-JMessage.updateGroupAvatar({ id: 'group_id'，imagePath:'newAvatar.jpg'},
+JMessage.updateGroupAvatar({ id: 'group_id'，imgPath:'newAvatar.jpg'},
   () => {  
     // do something.
 
@@ -646,7 +646,7 @@ JMessage.updateGroupAvatar({ id: 'group_id'，imagePath:'newAvatar.jpg'},
 
 #### 参数说明
 - id (string): 指定操作的群 groupId
-- imagePath (string): 本地图片绝对路径
+- imgPath (string): 本地图片绝对路径
 
 ### downloadThumbGroupAvatar
 
