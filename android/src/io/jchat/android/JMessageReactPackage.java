@@ -14,6 +14,10 @@ public class JMessageReactPackage implements ReactPackage {
 
     private boolean mShutdownToast;
 
+    public JMessageReactPackage() {
+        mShutdownToast = false;
+    }
+
     public JMessageReactPackage(boolean shutdownToast) {
         mShutdownToast = shutdownToast;
     }
