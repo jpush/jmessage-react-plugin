@@ -103,6 +103,7 @@ defaultConfig {
     }
 ```
 - 配置JCore-react-native
+
 1） /android/setting.gradle中添加
 ```
 include ':jcore-react-native'
