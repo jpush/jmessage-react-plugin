@@ -102,6 +102,17 @@ defaultConfig {
         ]
     }
 ```
+- 配置JCore-react-native
+* /android/setting.gradle中添加
+```
+include ':jcore-react-native'
+project(':jcore-react-native').projectDir = new File(rootProject.projectDir, '../node_modules/jcore-react-native/android')
+```
+* /android/app/build.gradle中添加
+```
+compile project(':jcore-react-native')
+```
+* 非常重要Clean Project
 
 在 MainApplication 中加上 JMessagePackage 即可，JMessagePackage 有一个参数，设置是否弹出 toast。
 ```
