@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.homepage        = "https://github.com/jpush/jmessage-react-native"
   s.summary         = pjson["description"]
   s.license         = pjson["license"]
-  s.author          = { "huminios" => "380108184@qq.com" }
+  s.author          = { "ys" => "ysyates@163.com" }
   
   s.ios.deployment_target = '7.0'
 
