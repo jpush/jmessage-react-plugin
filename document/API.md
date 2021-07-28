@@ -1786,7 +1786,7 @@ JMessageModule.setMsgHaveRead(params,(result) =>{
 
 聊天室的消息不存数据库，不支持获取历史消息，只支持文本消息。进入聊天室即可接收该聊天室的消息，退出则不在接收。
 
-### getChatRoomListByApp
+### getChatRoomListByApp[⬆](#api)
 
 查询当前 AppKey 下的聊天室信息。
 
@@ -1808,7 +1808,7 @@ JMessage.getChatRoomListByApp({ start: 0, count: 5, reason: '请求添加好友'
 - start: 起始位置。
 - count: 获得个数。
 
-### getChatRoomListByUser
+### getChatRoomListByUser[⬆](#api)
 
 获取当前用户（登录用户）所加入的所有聊天室信息。
 
@@ -1824,7 +1824,7 @@ JMessage.getChatRoomListByUser((chatRoomList) => { // chatRoomList 为当前用�
   })
 ```
 
-### getChatRoomInfos
+### getChatRoomInfos[⬆](#api)
 
 查询指定 roomId 聊天室信息。
 
@@ -1845,7 +1845,7 @@ JMessage.getChatRoomInfos({ roomIds: ['Example_RoomId_1'，'Example_RoomId_2']},
 
 - roomIds：需要获取聊天室详情的聊天室 id 列表。
 
-### getChatRoomOwner
+### getChatRoomOwner[⬆](#api)
 
 查询指定 roomId 聊天室的所有者。
 
@@ -1866,7 +1866,7 @@ JMessage.getChatRoomOwner({ roomId: 'Example_RoomId_1'},
 
 - roomId：需要获取聊天室所有者的聊天室 id。
 
-### enterChatRoom
+### enterChatRoom[⬆](#api)
 
 进入聊天室，进入后才能收到聊天室信息及发言。
 
@@ -1887,7 +1887,7 @@ JMessage.enterChatRoom({ roomId: 'Example_RoomId_1'},
 
 - roomId：要进入的聊天室的 id。
 
-### leaveChatRoom
+### leaveChatRoom[⬆](#api)
 
 离开指定聊天室。
 
@@ -1908,7 +1908,7 @@ JMessage.leaveChatRoom({ roomId: 'Example_RoomId_1'},
 
 - roomId：要离开的聊天室的 id。
 
-### getChatRoomConversationList
+### getChatRoomConversationList[⬆](#api)
 
 从本地获取用户的聊天室会话列表，没有则返回为空的列表。
 
