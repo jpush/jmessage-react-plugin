@@ -1,6 +1,6 @@
 {
   "name": "jmessage-react-plugin",
-  "version": "3.1.9",
+  "version": "3.2.1",
   "description": "a jmessage plugin for react native application",
   "main": "index.js",
   "repository": {
