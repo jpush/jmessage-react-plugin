@@ -50,7 +50,8 @@
         <!-- Required Push SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="false">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
                 <category android:name="${applicationId}" />
@@ -69,7 +70,8 @@
         </receiver>
 
         <!-- Required Push SDK核心功能 -->
-        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver"
+                  android:exported="false"/>
 
         <!-- IM Required IM SDK核心功能-->
         <receiver
@@ -84,7 +86,8 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <activity android:name="com.facebook.react.devsupport.DevSettingsActivity"
+                  android:exported="false"/>
         
         <!-- Required since JMessage 2.7.0 SDK 核心功能-->
         <provider
