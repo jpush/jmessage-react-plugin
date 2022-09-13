@@ -20,27 +20,6 @@
   "peerDependencies": {
     "jcore-react-native": ">= 1.2.11"
   },
-  "rnpm": {
-    "ios": {
-      "sharedLibraries": [
-        "libz",
-        "UserNotifications",
-        "CoreTelephony",
-        "Security",
-        "CFNetwork",
-        "CoreFoundation",
-        "SystemConfiguration",
-        "Foundation",
-        "UIKit",
-        "libresolv",
-        "CoreGraphics",
-        "CoreAudio",
-        "AudioToolbox",
-        "MobileCoreServices",
-        "libsqlite3"
-      ]
-    }
-  },
   "homepage": "https://github.com/jpush/jmessage-react-plugin#readme",
   "dependencies": {
     "jcore-react-native": ">=1.3.1"

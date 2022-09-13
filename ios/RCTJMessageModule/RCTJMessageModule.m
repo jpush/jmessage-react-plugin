@@ -51,6 +51,11 @@ RCT_EXPORT_MODULE();
     return self;
 }
 
++ (BOOL)requiresMainQueueSetup
+{
+    return YES;
+}
+
 - (void)setBridge:(RCTBridge *)bridge {
     _bridge = bridge;
     JMessageHelper.shareInstance.launchOptions = _bridge.launchOptions;
