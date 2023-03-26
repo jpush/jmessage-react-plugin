@@ -149,7 +149,7 @@ import JMessage from 'jmessage-react-plugin';
 
 ## 初始化
 
-### init
+### init[⬆](#api)
 **注意 Android 仍需在 build.gradle 中配置 appKey，具体可以[参考这个文件](https://github.com/jpush/jmessage-react-plugin/blob/dev/example/android/app/build.gradle)**
 初始化插件。建议在应用起始页的构造函数中调用。
 
@@ -169,7 +169,7 @@ JMessage.init({
 - isProduction：是否为生产模式。
 - channel：(选填)应用的渠道名称。
 
-### setDebugMode
+### setDebugMode[⬆](#api)
 
 设置是否开启 debug 模式，开启后 SDK 将会输出更多日志信息，推荐在应用对外发布时关闭。
 
@@ -182,7 +182,7 @@ JMessage.setDebugMode({ enable: true })
 
 - enable：为 true 打开 Debug 模式，false 关闭 Debug 模式。
 
-### setBadge
+### setBadge[⬆](#api)
 
 设置 badge 值，该操作会设置本地应用的 badge 值，同时设置极光服务器的 badge 值，收到消息 badge +1 会在极光服务器 badge 的基础上累加。
 
@@ -194,7 +194,7 @@ JMessage.setBadge(5, (success) => {})
 
 ## 用户登录、注册及属性维护
 
-### register
+### register[⬆](#api)
 
 用户注册。
 
@@ -213,7 +213,7 @@ JMessage.register({
 - username: 用户名。在应用中用于唯一标识用户，必须唯一。支持以字母或者数字开头，支持字母、数字、下划线、英文点（.）、减号、@。长度限制：Byte(4~128)。
 - password: 用户密码。不限制字符。长度限制：Byte(4~128)。
 
-### login
+### login[⬆](#api)
 
 ```javascript
 // 登录
@@ -228,7 +228,7 @@ JMessage.login({
 - username: 用户名。
 - password: 用户密码。
 
-### logout
+### logout[⬆](#api)
 
 用户登出。
 
@@ -238,7 +238,7 @@ JMessage.login({
 JMessage.logout()
 ```
 
-### getMyInfo
+### getMyInfo[⬆](#api)
 
 获取当前登录用户信息。如果未登录会返回空对象。可以用于判断用户登录状态
 
@@ -256,7 +256,7 @@ JMessage.getMyInfo((UserInf) => {
 })
 ```
 
-### getUserInfo
+### getUserInfo[⬆](#api)
 
 获取用户信息。该接口可以获取不同 AppKey 下（即不同应用）的用户信息，如果 AppKey 为空，则默认为当前应用下。
 
@@ -272,7 +272,7 @@ JMessage.getUserInfo({ username: 'username', appKey: 'your_app_key' },
     var desc = error.description
   })
 ```
-### updateMyPassword
+### updateMyPassword[⬆](#api)
 
 更新当前登录用户的密码。
 
@@ -289,7 +289,7 @@ JMessage.updateMyPassword({ oldPwd: 'old_password', newPwd: 'new_password' },
   })
 ```
 
-### updateMyAvatar
+### updateMyAvatar[⬆](#api)
 
 更新当前登录用户的头像。
 
@@ -313,7 +313,7 @@ JMessage.updateMyAvatar({ imgPath: 'img_local_path' },
   - Android：`/storage/emulated/0/DCIM/Camera/IMG_20160526_130223.jpg`
   - iOS：`/var/mobile/Containers/Data/Application/7DC5CDFF-6581-4AD3-B165-B604EBAB1250/tmp/photo.jpg`
 
-### updateMyInfo
+### updateMyInfo[⬆](#api)
 
 更新当前登录用户信息。包括了：昵称（nickname）、生日（birthday）、个性签名（signature）、性别（gender）、地区（region）和具体地址（address）。
 
@@ -337,7 +337,7 @@ JMessage.updateMyInfo({ nickname: 'nickname' },
 - gender: 必须为 'male', 'female' 和 'unknown' 中的一种。
 - 其余都为 `string` 类型，支持全部字符串；长度限制为 Byte (0~250)。
 
-### downloadThumbUserAvatar
+### downloadThumbUserAvatar[⬆](#api)
 
 下载用户头像缩略图。
 
@@ -361,7 +361,7 @@ JMessage.downloadThumbUserAvatar(param, (result) => {}, (err) => {})
   - appKey (string):
   - filePath (string): 下载后的图片路径
 
-### downloadOriginalUserAvatar
+### downloadOriginalUserAvatar[⬆](#api)
 
 下载用户头像原图。
 
@@ -387,7 +387,7 @@ JMessage.downloadThumbUserAvatar(param, (result) => {}, (err) => {})
 
 ## 群组
 
-### createGroup
+### createGroup[⬆](#api)
 
 创建群组。
 
@@ -411,7 +411,7 @@ JMessage.createGroup({ name: 'group_name', desc: 'group_desc' },
 - desc (string): 群组描述。长度限制为 0 ~ 250 Byte。
 
 
-### dissolveGroup
+### dissolveGroup[⬆](#api)
 
 解散群
 
@@ -430,7 +430,7 @@ JMessage.dissolveGroup({ groupId: 'group_id' },
 #### 参数说明
 - groupId (string): 要解散的群组 id。
 
-### getGroupIds
+### getGroupIds[⬆](#api)
 
 获取当前用户群组
 
@@ -453,7 +453,7 @@ JMessage.getGroupIds(
 
 无
 
-### getGroupInfo
+### getGroupInfo[⬆](#api)
 
 根据群组id获取群组信息
 
@@ -490,7 +490,7 @@ JMessage.getGroupInfo(
 
 - id(string): 指定群组
 
-### updateGroupInfo
+### updateGroupInfo[⬆](#api)
 
 更新群组信息。
 
@@ -513,7 +513,7 @@ JMessage.updateGroupInfo({ id: 'groupId' ,newName: 'group_name', newDesc: 'group
 - newName (string): 群组名。不支持 "\n" 和 "\r" 字符，长度限制为 0 ~ 64 Byte。
 - newDesc (string): 群组描述。长度限制为 0 ~ 250 Byte。
 
-### addGroupMembers
+### addGroupMembers[⬆](#api)
 
 批量添加群成员
 
@@ -534,7 +534,7 @@ JMessage.addGroupAdmins({ id: 'group_id', usernameArray: ['ex_username1', 'ex_us
 - usernameArray (array<string>): 被添加的的用户名数组。
 - appKey: 被添加用户所属应用的 AppKey。如果不填，默认为当前应用。
 
-### removeGroupMembers
+### removeGroupMembers[⬆](#api)
 
 批量删除群成员
 
@@ -555,7 +555,7 @@ JMessage.removeGroupMembers({ id: 'group_id', usernameArray: ['ex_username1', 'e
 - usernameArray (array<string>): 被添加的的用户名数组。
 - appKey: 被添加用户所属应用的 AppKey。如果不填，默认为当前应用。
 
-### getGroupMembers
+### getGroupMembers[⬆](#api)
 
 获取群组成员列表
 
@@ -574,7 +574,7 @@ JMessage.getGroupMembers({ id: 'group_id'},
 #### 参数说明
 - id (string): 指定操作的群 groupId
 
-### exitGroup
+### exitGroup[⬆](#api)
 
 退出群组
 
@@ -593,7 +593,7 @@ JMessage.exitGroup({ id: 'group_id'},
 #### 参数说明
 - id (string): 指定操作的群 groupId
 
-### isGroupBlocked
+### isGroupBlocked[⬆](#api)
 
 查询指定群组是否被屏蔽
 
@@ -612,7 +612,7 @@ JMessage.isGroupBlocked({ id: 'group_id'},
 #### 参数说明
 - id (string): 指定操作的群 groupId
 
-### getBlockedGroupList
+### getBlockedGroupList[⬆](#api)
 
 获取被当前登录用户屏蔽的群组列表
 
@@ -628,7 +628,7 @@ JMessage.getBlockedGroupList((groupArr) => {
   })
 ```
 
-### updateGroupAvatar
+### updateGroupAvatar[⬆](#api)
 
  更新指定群组头像
 
@@ -648,7 +648,7 @@ JMessage.updateGroupAvatar({ id: 'group_id'，imgPath:'newAvatar.jpg'},
 - id (string): 指定操作的群 groupId
 - imgPath (string): 本地图片绝对路径
 
-### downloadThumbGroupAvatar
+### downloadThumbGroupAvatar[⬆](#api)
 
  下载群组头像缩略图，如果已经下载，不会重复下载。
 
@@ -668,7 +668,7 @@ JMessage.downloadThumbGroupAvatar({ id: 'group_id'},
 #### 参数说明
 - id (string): 指定操作的群 groupId
 
-### downloadOriginalGroupAvatar
+### downloadOriginalGroupAvatar[⬆](#api)
 
  下载群组头像原图，如果已经下载，不会重复下载。
 
@@ -691,7 +691,7 @@ JMessage.downloadOriginalGroupAvatar({ id: 'group_id'},
 #### 返回值说明
 - groupArr: GroupInfo 数组
 
-### addGroupAdmins
+### addGroupAdmins[⬆](#api)
 
 批量添加管理员
 
@@ -711,7 +711,7 @@ JMessage.addGroupAdmins({ groupId: 'group_id', usernames: ['ex_username1', 'ex_u
 - groupId (string): 指定操作的群 groupId。
 - usernames (array<string>): 被添加的的用户名数组。
 
-### removeGroupAdmins
+### removeGroupAdmins[⬆](#api)
 
 批量删除管理员
 
@@ -731,7 +731,7 @@ JMessage.removeGroupAdmins({ groupId: 'group_id', usernames: ['ex_username1', 'e
 - groupId (string): 指定操作的群 groupId。
 - usernames (array<string>): 被移除的的用户名数组。
 
-### changeGroupType
+### changeGroupType[⬆](#api)
 
 修改群类型
 
@@ -751,7 +751,7 @@ JMessage.changeGroupType({ groupId: 'group_id', type: 'public' },
 - groupId (string): 指定操作的群 groupId。
 - type (string): 要修改的类型可以为如下值  'private' | 'public'
 
-### getPublicGroupInfos
+### getPublicGroupInfos[⬆](#api)
 
 分页获取指定 appKey 下的共有群
 
@@ -772,7 +772,7 @@ JMessage.getPublicGroupInfos({ appKey: 'my_appkey', start: 0, count: 20 },
 - start (int): 开始的位置
 - count (int): 获取的数量
 
-### applyJoinGroup
+### applyJoinGroup[⬆](#api)
 
 申请入群（公开群）
 
@@ -790,7 +790,7 @@ JMessage.applyJoinGroup({ groupId: 'group_id', reason: 'Hello I from ...' },
 
 #### 参数说明
 
-### processApplyJoinGroup
+### processApplyJoinGroup[⬆](#api)
 
 批量处理入群（公开群）申请
 
@@ -810,7 +810,7 @@ JMessage.processApplyJoinGroup({ events: ['ex_event_id_1', 'ex_event_id_2'], rea
 - events (array<string>): eventId 数组,当有用户申请入群的时候(或者被要求)会回调一个 event(通过 addReceiveApplyJoinGroupApprovalListener 监听)，每个 event 会有个 id，用于审核入群操作。
 - reason (string): 入群理由。
 
-### transferGroupOwner
+### transferGroupOwner[⬆](#api)
 
 移交群主
 
@@ -831,7 +831,7 @@ JMessage.transferGroupOwner({ groupId: 'group_id', username: 'ex_username', appK
 - username (string): 待移交者用户名。
 - appKey (string): 待移交者 appKey, 若传入空则默认使用本应用 appKey。
 
-### setGroupMemberSilence
+### setGroupMemberSilence[⬆](#api)
 
 设置禁言或解禁用户
 
@@ -853,7 +853,7 @@ JMessage.setGroupMemberSilence({ groupId: 'group_id', username: 'ex_username', a
 - appKey (string): 待移交者 appKey, 若传入空则默认使用本应用 appKey。
 - isSilence（Boolean）:true 设置禁言， false 取消禁言
 
-### isSilenceMember
+### isSilenceMember[⬆](#api)
 
 判断用户是否被禁言
 
@@ -874,7 +874,7 @@ JMessage.isSilenceMember({ groupId: 'group_id', username: 'ex_username', appKey:
 - username (string): 待移交者用户名。
 - appKey (string): 待移交者 appKey, 若传入空则默认使用本应用 appKey。
 
-### groupSilenceMembers
+### groupSilenceMembers[⬆](#api)
 
 获取群禁言列表 （注意在获取群列表成功后该方法才有效）
 
@@ -893,7 +893,7 @@ JMessage.groupSilenceMembers({ groupId: 'group_id'},
 #### 参数说明
 - groupId (string): 指定操作的群 groupId。
 
-### setGroupNickname
+### setGroupNickname[⬆](#api)
 
 设置群成员昵称
 
@@ -917,7 +917,7 @@ JMessage.setGroupNickname({ groupId: 'group_id', username: 'ex_username', appKey
 
 ## 黑名单
 
-### addUsersToBlacklist
+### addUsersToBlacklist[⬆](#api)
 
 批量加入用户到黑名单
 
@@ -939,7 +939,7 @@ JMessage.addUsersToBlacklist({ usernameArray: ['user1', 'user2'], appKey: 'appKe
 - usernameArray （array<string>）: 待添加的用户名数组。
 - appKey (string): 待添加用户所属应用的 AppKey，如果为空或不填，默认为当前应用。
 
-### removeUsersFromBlacklist
+### removeUsersFromBlacklist[⬆](#api)
 
 批量将用户从黑名单中移除
 
@@ -961,7 +961,7 @@ JMessage.removeUsersFromBlacklist({ usernameArray: ['user1', 'user2'], appKey: '
 - usernameArray （array<string>）: 待移除的用户名数组。
 - appKey (string): 待添加用户所属应用的 AppKey，如果为空或不填，默认为当前应用。
 
-### getBlacklist
+### getBlacklist[⬆](#api)
 
 批量将用户从黑名单中移除
 
@@ -980,7 +980,7 @@ JMessage.getBlacklist((userInfoArray) => {  //黑名单中用户的 UserInfo 数
 
 ## 免打扰
 
-### setNoDisturb
+### setNoDisturb[⬆](#api)
 
 设置对某个用户或群组是否免打扰
 
@@ -1005,7 +1005,7 @@ JMessage.setNoDisturb({ type: 'single', username: 'username', isNoDisturb: true 
 - groupId (string): 群组 id。当 type 为 'group' 时必填。
 - isNoDisturb (boolean): true: 开启免打扰；false: 关闭免打扰
 
-### getNoDisturbList
+### getNoDisturbList[⬆](#api)
 
 设置对某个用户或群组是否免打扰
 
@@ -1028,7 +1028,7 @@ JMessage.getNoDisturbList((result) => {
     - userInfoArray （array<UserInfo>）: 处于免打扰状态的用户信息列表；
     - userInfoArray: 处于免打扰状态的用户信息列表；
 
-### setNoDisturbGlobal
+### setNoDisturbGlobal[⬆](#api)
 
 设置全局免打扰。
 
@@ -1049,7 +1049,7 @@ JMessage.setNoDisturbGlobal({ isNoDisturb: true },
 
 - isNoDisturb (boolean): true: 开启免打扰；false: 关闭免打扰
 
-### isNoDisturbGlobal
+### isNoDisturbGlobal[⬆](#api)
 
 判断当前是否开启了全局免打扰。
 
@@ -1073,7 +1073,7 @@ JMessage.isNoDisturbGlobal((result) => {
 
 ## 聊天
 
-### createSendMessage
+### createSendMessage[⬆](#api)
 
 创建消息，创建好消息后需要调用 [sendMessage](#sendmessage) 来发送消息。如果需要状态更新（发送中到发送完成）推荐这种方式，聊天室不支持该接口。
 
@@ -1108,7 +1108,7 @@ JMessage.createSendMessage({type: 'group', groupId: 'group id', appKey: 'appkey'
 - customObject：自定义消息键值对（自定义消息需要该字段）。
 - extras: 自定义键值对，value 必须为字符串类型，可在所有类型的消息中附加键值对（非必须）。
 
-### sendMessage
+### sendMessage[⬆](#api)
 
 与 [createSendMessage](#createsendmessage) 配合使用，用于发送创建好的消息。
 
@@ -1141,7 +1141,7 @@ JMessage.createSendMessage({type: 'single', username: 'username', appKey: 'appke
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
   - needReadReceipt: 设置这条消息的发送是否需要对方发送已读回执 开启之后，对方收到消息后，如果调用了setMsgHaveRead()接口， 则作为消息发送方，会收到已读消息回执事件通知
 
-### sendTextMessage
+### sendTextMessage[⬆](#api)
 
 发送文本消息。
 
@@ -1187,7 +1187,7 @@ JMessage.sendTextMessage({ type: 'group', groupId: 'target_group_id', text: 'hel
   - notificationTitle: 设置此条消息在接收方通知栏所展示通知的标题。
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
 
-### sendImageMessage
+### sendImageMessage[⬆](#api)
 
 发送图片消息，在收到消息时 SDK 默认会自动下载缩略图，如果要下载原图，需调用 `downloadOriginalImage` 方法。
 
@@ -1234,7 +1234,7 @@ JMessage.sendImageMessage({ type: 'group', groupId: 'target_group_id', path: 'im
   - notificationTitle: 设置此条消息在接收方通知栏所展示通知的标题。
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
 
-### sendVoiceMessage
+### sendVoiceMessage[⬆](#api)
 
 发送语音消息，在收到消息时 SDK 默认会自动下载语音文件，如果下载失败（即语音消息文件路径为空），可调用 `downloadVoiceFile` 手动下载。
 
@@ -1279,7 +1279,7 @@ JMessage.sendVoiceMessage({ type: 'group', groupId: 'target_group_id', path: 'vo
   - notificationTitle: 设置此条消息在接收方通知栏所展示通知的标题。
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
 
-### sendCustomMessage
+### sendCustomMessage[⬆](#api)
 
 发送自定义消息。
 
@@ -1323,7 +1323,7 @@ JMessage.sendCustomMessage({ type: 'group', groupId: 'target_group_id', path: 'v
   - notificationTitle: 设置此条消息在接收方通知栏所展示通知的标题。
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
 
-### sendLocationMessage
+### sendLocationMessage[⬆](#api)
 
 发送地理位置消息，通常需要配合地图插件使用。
 
@@ -1373,7 +1373,7 @@ JMessage.sendLocationMessage({ type: 'group', groupId: 'target_group_id',
   - notificationTitle: 设置此条消息在接收方通知栏所展示通知的标题。
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
 
-### sendFileMessage
+### sendFileMessage[⬆](#api)
 
 发送文件消息。对方在收到文件消息时 SDK 不会自动下载，下载文件需手动调用 `downloadFile` 方法。
 
@@ -1419,7 +1419,7 @@ JMessage.sendFileMessage({ type: 'group', groupId: 'target_group_id', path: 'fil
   - notificationTitle: 设置此条消息在接收方通知栏所展示通知的标题。
   - notificationText: 设置此条消息在接收方通知栏所展示通知的内容。
 
-### retractMessage
+### retractMessage[⬆](#api)
 
 消息撤回。调用后被撤回方会收到一条 `retractMessage` 事件。并且双方的消息内容将变为不可见。
 
@@ -1445,7 +1445,7 @@ JMessage.retractMessage({type: 'single', username: 'username', appKey: 'appKey',
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - messageId: 要撤回的消息 id。
 
-### getHistoryMessages
+### getHistoryMessages[⬆](#api)
 
 从最新的消息开始获取历史消息。
 
@@ -1473,7 +1473,7 @@ JMessage.getHistoryMessages({ type: 'single', username: 'username',
 - limit: 消息数。当 from = 0 并且 limit = -1 时，返回所有的历史消息。
 - isDescend: 是否降序（消息时间戳从大到小排序），默认为 false。
 
-### downloadOriginalImage
+### downloadOriginalImage[⬆](#api)
 
 下载图片消息原图。如果已经下载，会直接返回本地文件路径，不会重复下载。
 
@@ -1500,7 +1500,7 @@ JMessage.downloadOriginalImage({ type: 'single', username: 'username',
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - messageId: 图片消息 id。
 
-### downloadThumbImage
+### downloadThumbImage[⬆](#api)
 
 下载图片消息缩略图。如果已经下载，会直接返回本地文件路径，不会重复下载。
 
@@ -1527,7 +1527,7 @@ JMessage.downloadThumbImage({ type: 'single', username: 'username',
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - messageId: 图片消息 id。
 
-### downloadVoiceFile
+### downloadVoiceFile[⬆](#api)
 
 下载语音文件。如果已经下载，会直接返回本地文件路径，不会重复下载。
 
@@ -1554,7 +1554,7 @@ JMessage.downloadVoiceFile({ type: 'single', username: 'username',
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - messageId: 语音消息 id。
 
-### downloadFile
+### downloadFile[⬆](#api)
 
 下载文件。如果已经下载，会直接返回本地文件路径，不会重复下载。
 
@@ -1583,7 +1583,7 @@ JMessage.downloadFile({ type: 'single', username: 'username',
 
 ## 会话
 
-### createConversation
+### createConversation[⬆](#api)
 
 创建 [会话](./Models.md)。
 
@@ -1608,7 +1608,7 @@ JMessage.createConversation({ type: 'single', username: 'username', appKey: 'app
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - roomId: 对象聊天室 id。当 `type` 为 'chatRoom' 时，`roomId` 为必填。
 
-### deleteConversation
+### deleteConversation[⬆](#api)
 
 删除聊天会话，同时也会删除本地聊天记录。
 
@@ -1633,7 +1633,7 @@ JMessage.deleteConversation({ type: 'single', username: 'username', appKey: 'app
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - roomId: 对象聊天室 id。当 `type` 为 'chatRoom' 时，`roomId` 为必填。
 
-### enterConversation
+### enterConversation[⬆](#api)
 
 **(Android only)** 进入聊天会话。当调用后，该聊天会话的消息将不再显示通知。
 
@@ -1659,7 +1659,7 @@ JMessage.enterConversation({ type: 'single', username: 'username', appKey: 'appK
 - appKey: 对方用户所属应用的 AppKey。如果不填，默认为当前应用。
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 
-### exitConversation
+### exitConversation[⬆](#api)
 
 **(Android only)** 退出当前聊天会话。调用后，聊天会话之后的相关消息通知将会被触发。
 
@@ -1669,7 +1669,7 @@ JMessage.enterConversation({ type: 'single', username: 'username', appKey: 'appK
 JMessage.exitConversation();
 ```
 
-### getConversation
+### getConversation[⬆](#api)
 
 获取[聊天会话对象](./Models.md)。
 
@@ -1694,7 +1694,7 @@ JMessage.getConversation({ type: 'single', username: 'username', appKey: 'appKey
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - roomId: 对象聊天室 id。当 `type` 为 'chatRoom' 时，`roomId` 为必填。
 
-### getConversations
+### getConversations[⬆](#api)
 
 从本地数据库获取会话列表。默认按照会话的最后一条消息时间降序排列。
 
@@ -1710,7 +1710,7 @@ JMessage.getConversations((conArr) => { // conArr: 会话数组。
 })
 ```
 
-### getAllUnreadCount
+### getAllUnreadCount[⬆](#api)
 
 当前用户所有会话的未读消息总数
 
@@ -1732,7 +1732,7 @@ JMessage.getAllUnreadCount(
 
 无
 
-### resetUnreadMessageCount
+### resetUnreadMessageCount[⬆](#api)
 
 重置会话的未读消息数。
 
@@ -1757,7 +1757,7 @@ JMessage.resetUnreadMessageCount({ type: 'single', username: 'username', appKey:
 - groupId: 对象群组 id。当 `type` 为 'group' 时，`groupId` 为必填。
 - roomId: 对象聊天室 id。当 `type` 为 'chatRoom' 时，`roomId` 为必填。
 
-### setMsgHaveRead
+### setMsgHaveRead[⬆](#api)
 
 设置消息已读
 
@@ -1786,7 +1786,7 @@ JMessageModule.setMsgHaveRead(params,(result) =>{
 
 聊天室的消息不存数据库，不支持获取历史消息，只支持文本消息。进入聊天室即可接收该聊天室的消息，退出则不在接收。
 
-### getChatRoomListByApp
+### getChatRoomListByApp[⬆](#api)
 
 查询当前 AppKey 下的聊天室信息。
 
@@ -1808,7 +1808,7 @@ JMessage.getChatRoomListByApp({ start: 0, count: 5, reason: '请求添加好友'
 - start: 起始位置。
 - count: 获得个数。
 
-### getChatRoomListByUser
+### getChatRoomListByUser[⬆](#api)
 
 获取当前用户（登录用户）所加入的所有聊天室信息。
 
@@ -1824,7 +1824,7 @@ JMessage.getChatRoomListByUser((chatRoomList) => { // chatRoomList 为当前用�
   })
 ```
 
-### getChatRoomInfos
+### getChatRoomInfos[⬆](#api)
 
 查询指定 roomId 聊天室信息。
 
@@ -1845,7 +1845,7 @@ JMessage.getChatRoomInfos({ roomIds: ['Example_RoomId_1'，'Example_RoomId_2']},
 
 - roomIds：需要获取聊天室详情的聊天室 id 列表。
 
-### getChatRoomOwner
+### getChatRoomOwner[⬆](#api)
 
 查询指定 roomId 聊天室的所有者。
 
@@ -1866,7 +1866,7 @@ JMessage.getChatRoomOwner({ roomId: 'Example_RoomId_1'},
 
 - roomId：需要获取聊天室所有者的聊天室 id。
 
-### enterChatRoom
+### enterChatRoom[⬆](#api)
 
 进入聊天室，进入后才能收到聊天室信息及发言。
 
@@ -1887,7 +1887,7 @@ JMessage.enterChatRoom({ roomId: 'Example_RoomId_1'},
 
 - roomId：要进入的聊天室的 id。
 
-### leaveChatRoom
+### leaveChatRoom[⬆](#api)
 
 离开指定聊天室。
 
@@ -1908,7 +1908,7 @@ JMessage.leaveChatRoom({ roomId: 'Example_RoomId_1'},
 
 - roomId：要离开的聊天室的 id。
 
-### getChatRoomConversationList
+### getChatRoomConversationList[⬆](#api)
 
 从本地获取用户的聊天室会话列表，没有则返回为空的列表。
 
@@ -1931,7 +1931,7 @@ JMessage.getChatRoomConversationList( (conversationList) => { // conversationLis
 JMessage 好友模块仅实现对用户好友关系的托管，以及相关好友请求的发送与接收。
 除此之外更多的功能，比如仅允许好友间聊天需要开发者自行实现。
 
-### sendInvitationRequest
+### sendInvitationRequest[⬆](#api)
 
 发送添加好友请求，调用后对方会收到 [好友事件](#addcontactnotifylistener) 事件。
 
@@ -1954,7 +1954,7 @@ JMessage.sendInvitationRequest({ username: 'username', appKey: 'appKey', reason:
 - appKey: 对方用户所属应用的 AppKey，如果为空则默认为当前应用。
 - reason: 申请理由。
 
-### acceptInvitation
+### acceptInvitation[⬆](#api)
 
 接受申请好友请求，调用后对方会收到 [好友事件](#addcontactnotifylistener) 事件。
 
@@ -1976,7 +1976,7 @@ JMessage.acceptInvitation({ username: 'username', appKey: 'appKey' },
 - username: 申请发送用户的用户名。
 - appKey: 申请发送用户所在应用的 AppKey。
 
-### declineInvitation
+### declineInvitation[⬆](#api)
 
 拒绝申请好友请求，调用成功后对方会收到 [好友事件](#addcontactnotifylistener) 事件。
 
@@ -1999,7 +1999,7 @@ JMessage.declineInvitation({ username: 'username', appKey: 'appKey', reason: '�
 - appKey: 申请发送用户所在应用的 AppKey。
 - reason: 拒绝理由。长度要求为 0 ~ 250 Byte。
 
-### getFriends
+### getFriends[⬆](#api)
 
 获取好友列表。
 
@@ -2015,7 +2015,7 @@ JMessage.getFriends((friendArr) => {  // 好友用户对象数组。
 })
 ```
 
-### removeFromFriendList
+### removeFromFriendList[⬆](#api)
 
 删除好友，调用成功后对方会收到 [好友事件](#addcontactnotifylistener) 事件。
 
@@ -2032,7 +2032,7 @@ JMessage.removeFromFriendList({ username: 'username', appKey: 'appKey' },
   })
 ```
 
-### updateFriendNoteName
+### updateFriendNoteName[⬆](#api)
 
 更新好友备注名。
 
@@ -2055,7 +2055,7 @@ JMessage.updateFriendNoteName({ username: 'username', appKey: 'appKey', noteName
 - appKey: 好友所属应用的 AppKey，如果为空默认为当前应用。
 - noteName: 备注名。不支持 "\n" 和 "\r" 字符，长度要求为 0 ~ 64 Byte。
 
-### updateFriendNoteText
+### updateFriendNoteText[⬆](#api)
 
 更新用户备注信息。
 
@@ -2083,7 +2083,7 @@ JMessage.updateFriendNoteText({ username: 'username', appKey: 'appKey', noteText
 
 ### 消息事件
 
-#### addReceiveMessageListener
+#### addReceiveMessageListener[⬆](#api)
 
 添加消息事件的监听。
 
@@ -2098,7 +2098,7 @@ JMessage.addReceiveMessageListener(listener) // 添加监听
 JMessage.removeReceiveMessageListener(listener) // 移除监听(一般在 componentWillUnmount 中调用)
 ```
 
-#### addReceiveChatRoomMsgListener
+#### addReceiveChatRoomMsgListener[⬆](#api)
 
 添加聊天室消息事件的监听。
 
@@ -2112,7 +2112,7 @@ var listener = ([message]) => {
 JMessage.addReceiveChatRoomMsgListene(listener) // 添加监听
 JMessage.removeReceiveChatRoomMsgListener(listener) // 移除监听(一般在 componentWillUnmount 中调用)
 ```
-####  addSyncOfflineMessageListener
+####  addSyncOfflineMessageListener[⬆](#api)
 
 同步离线消息事件监听。
 
@@ -2133,7 +2133,7 @@ JMessage.removeSyncOfflineMessageListener(listener) // 移除监听(一般在 co
   - conversation：离线消息所在的会话
   - messageArray：指定会话中的离线消息
 
-####  addReceiptMessageListener
+####  addReceiptMessageListener[⬆](#api)
 
 已读消息回执事件监听。
 
@@ -2155,7 +2155,7 @@ JMessage.removeReceiptMessageListener(listener) // 移除监听(一般在 compon
       - unReceiptCount：未回执数被改变的消息的当前未发送已读回执的人数
       - unReceiptMTime：获取未回执数被改变的消息的未回执人数变更时间
       
-#### addSyncRoamingMessageListener
+#### addSyncRoamingMessageListener[⬆](#api)
 
 同步漫游消息事件监听。
 
@@ -2177,7 +2177,7 @@ JMessage.removeSyncRoamingMessageListener(listener) // 移除监听(一般在 co
 
 
 
-####  addMessageRetractListener
+####  addMessageRetractListener[⬆](#api)
 
 消息撤回事件监听。
 
@@ -2198,7 +2198,7 @@ JMessage.removeMessageRetractListener(listener) // 移除监听(一般在 compon
 
 
 
-#### addClickMessageNotificationListener
+#### addClickMessageNotificationListener[⬆](#api)
 
 点击消息通知回调（Android Only，iOS 端可以使用 jpush-react-native 插件的，监听点击推送的事件）。
 
@@ -2217,7 +2217,7 @@ JMessage.removeClickMessageNotificationListener(listener) // 移除监听(一般
 
 ### 好友事件
 
-####  addContactNotifyListener
+####  addContactNotifyListener[⬆](#api)
 
 好友相关通知事件。
 
@@ -2243,7 +2243,7 @@ JMessage.removeContactNotifyListener(listener) // 移除监听(一般在 compone
 
 ### 登录状态事件
 
-#### addLoginStateChangedListener
+#### addLoginStateChangedListener[⬆](#api)
 
 登录状态变更事件，例如在其他设备登录把当前设备挤出，会触发这个事件。
 
@@ -2262,7 +2262,7 @@ JMessage.removeMessageRetractListener(listener) // 移除监听(一般在 compon
   - type:  'user_password_change' / 'user_logout' / 'user_deleted' / 'user_login_status_unexpected'
 
 
-#### addUploadProgressListener
+#### addUploadProgressListener[⬆](#api)
 
 发送文件（图片、文件）进度回调，该回调会回调多次。
 
@@ -2283,7 +2283,7 @@ JMessage.removeUploadProgressListener(listener) // 移除监听(一般在 compon
 
 ### 群组事件
 
-#### addReceiveApplyJoinGroupApprovalListener
+#### addReceiveApplyJoinGroupApprovalListener[⬆](#api)
 
 监听接收入群申请事件
 
@@ -2305,7 +2305,7 @@ JMessage.removeReceiveApplyJoinGroupApprovalListener(listener) // 移除监听(�
   - sendApplyUser ([{UserInfo}])：发送申请的用户
   - reason (string)：入群原因
 
-#### addReceiveGroupAdminRejectListener
+#### addReceiveGroupAdminRejectListener[⬆](#api)
 
 监听管理员拒绝入群申请事件
 
@@ -2326,7 +2326,7 @@ JMessage.removeReceiveGroupAdminRejectListener(listener) // 移除监听(一般�
   - groupManager ({UserInfo}): 操作的管理员
 
 
-#### addReceiveGroupAdminApprovalListener
+#### addReceiveGroupAdminApprovalListener[⬆](#api)
 
 监听管理员同意入群申请事件
 
